@@ -1,0 +1,8 @@
+#Add only one package in a single line
+
+git
+vim
+codeblocks
+flashplugin-installer
+prboom
+
