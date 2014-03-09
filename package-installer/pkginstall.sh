@@ -1,22 +1,24 @@
 #!/bin/bash
 
+#update apt-get
 sudo apt-get update
 
 f="list.txt"
 
+#check if file exists
 if [ -e "$f" ]
 then
-   if [ -r "$f" ]
+   if [ -r "$f" ]  #check if the script has permissions to access file
    then 
-     while read line           
+     while read line          
      do           
-     if echo "$line" | grep -q "#";then
+     if echo "$line" | grep -q "#";then  #search for comments and omit them
          echo -e  "\nLeaving out comments!"
 
-     elif echo "$line" | grep -q '^$';then
+     elif echo "$line" | grep -q '^$';then #check if it is an empty line
          continue
      else
-         echo -e "\nRunning apt-get install $line"
+         echo -e "\nRunning apt-get install $line" 
          sudo apt-get install $line -y
      fi          
      done <list.txt 
